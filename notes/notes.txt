@@ -1,0 +1,41 @@
+THEORY (from https://www.youtube.com/watch?v=CqOfi41LfDw)
+ - simple example
+    - predict a drugs effectiveness based on dose
+    - low and high are ineffective (0), but medium is (1)
+    - on a graph, no straight line will give us a good prediction of whether
+        a new dosage would be effectiveness
+    - neural networks can fit a squiggle to the data
+        - were gonna use this example to show how nn fits the squiggle
+ -  what is a neural network?
+    - consists of nodes
+        - inside of nodes in pic, the lines are the building bocks for fitting
+            the squiggle 
+            - represents softplus, ReLU, sigmoid, or other lines
+            - also known as activation functions
+    - and connections between the nodes
+        - the numbers along each connection represent parameter values that 
+            were estimated when the nn was fit to the data
+        - for the simple example, the parameter estimates are basically slope 
+            and intercept we solve for when fitting a straight line to data
+        - parameter values start unknown, but estimated with backpropagation
+    - example in video has one input node, one output node, and 1 hidden layer
+        with 2 nodes in the layer
+ - how do we create a squiggle from the activation functions?
+    - assume that dosages go from low (0) to high (1)
+    - assume parameters are already found
+    - first, plug lowest dosage (0) into the nn
+        - to get from input node to top node, use the parameters to get x coord
+            - (dosage * 34.3) + 2.14 = x-axis coordinate for activation function
+            - get y-coord by plugging x-coord into the activation function
+            - from this you get a curve
+            - then, scale the curve by -1.3
+            - new curve!
+        - do the same for the bottom node with it's parameters
+        - now, add the curves together, and then subtract 0.58
+        - this forms the squiggle!
+            - if you want to make a prediction, use the value as the input,
+                and do the math again to get the efficacy (output)
+ - terminology
+    - the parameters that are multiplied are weights
+    - the parameters that are added are biases
+
